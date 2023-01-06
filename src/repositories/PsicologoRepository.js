@@ -1,4 +1,4 @@
-import Psicologo from "../models/Psicologo.js";
+import { Psicologo } from "../models/index.js";
 
 class PsicologoRepository {
     static async listar() {
@@ -6,7 +6,7 @@ class PsicologoRepository {
     }
 
     static async buscarPorId(id) {
-        return await Psicologo.findByPk(id);;
+        return await Psicologo.findByPk(id, {attributes: {exclude: ['senha']}});;
     }
 
     static async criar(data) {
@@ -25,11 +25,11 @@ class PsicologoRepository {
             apresentacao: data.apresentacao,
             email: data.email,
             senha: data.senha
-        }, {where: {id}});
+        }, { where: { id } });
     }
 
     static async excluir(id) {
-        return await Psicologo.destroy({where: {id}});
+        return await Psicologo.destroy({ where: { id } });
     }
 }
 

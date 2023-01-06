@@ -1,4 +1,4 @@
-import Paciente from "../models/Paciente.js";
+import { Paciente } from "../models/index.js";
 
 class PacienteRepository {
     static async listar() {
@@ -23,11 +23,11 @@ class PacienteRepository {
             nome: data.nome,
             nascimento: data.nascimento,
             email: data.email
-        }, {where: {id}});
+        }, { where: { id } });
     }
 
     static async excluir(id) {
-        return await Paciente.destroy({where: {id}});
+        return await Paciente.destroy({ where: { id } });
     }
 }
 

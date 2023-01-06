@@ -20,3 +20,15 @@ CREATE TABLE IF NOT EXISTS psicologos(
     createdAt DATETIME NOT NULL,
     updatedAt DATETIME NOT NULL
 ) ENGINE = InnoDB;
+
+CREATE TABLE atendimentos (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    paciente_id INT NOT NULL,
+    psicologo_id INT NOT NULL,
+    observacao TEXT NOT NULL,
+    data_atendimento TIMESTAMP NOT NULL,
+    createdAt DATETIME NOT NULL,
+    updatedAt DATETIME NOT NULL,
+    CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES pacientes (id),
+    CONSTRAINT fk_psicologo FOREIGN KEY (psicologo_id) REFERENCES psicologos (id)
+) ENGINE = InnoDB;
