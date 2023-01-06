@@ -1,13 +1,11 @@
 import * as dotenv from 'dotenv';
-import express from "express";
+
+import app from "./src/app.js";
+import {dbHasConnection} from "./src/database/db.js";
 
 dotenv.config();
 
-const app = express();
-
-app.get("/", (req, res) => {
-    res.status(200).json({msg: "Hello World"})
-})
+dbHasConnection();
 
 const port = process.env.PORT; 
 
