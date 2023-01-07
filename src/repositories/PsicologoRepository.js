@@ -6,7 +6,11 @@ class PsicologoRepository {
     }
 
     static async buscarPorId(id) {
-        return await Psicologo.findByPk(id, {attributes: {exclude: ['senha']}});;
+        return await Psicologo.findByPk(id, { attributes: { exclude: ['senha'] } });;
+    }
+
+    static async buscarPorEmail(email) {
+        return await Psicologo.findOne({ where: { email } });
     }
 
     static async criar(data) {

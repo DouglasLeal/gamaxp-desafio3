@@ -29,7 +29,7 @@ class AtendimentoController{
 
     static async criar(req, res) {
         try {
-            req.body.psicologo_id = 1;
+            req.body.psicologo_id = req.AUTH.id;
 
             let novoAtendimento = await AtendimentoRepository.criar(req.body);
             return res.status(201).json(novoAtendimento);
