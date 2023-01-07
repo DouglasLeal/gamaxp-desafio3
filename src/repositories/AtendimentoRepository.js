@@ -33,6 +33,10 @@ class AtendimentoRepository {
     static async excluir(id) {
         return await Atendimento.destroy({ where: { id } });
     }
+
+    static async contarRegistros(){
+        return await Atendimento.count();
+    }
 }
 
 export default AtendimentoRepository;

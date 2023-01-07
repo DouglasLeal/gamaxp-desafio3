@@ -1,4 +1,5 @@
 import AtendimentoRepository from "../repositories/AtendimentoRepository.js";
+import PsicologoRepository from "../repositories/PsicologoRepository.js";
 
 class AtendimentoController{
     static async listar(req, res) {
@@ -71,6 +72,26 @@ class AtendimentoController{
         } catch (error) {
             return res.status(500).json({"msg": "Não foi possível realizar esta ação."});
         }
+    }
+
+    static async contarRegistros(req, res){
+        try {
+            const quantidade = await AtendimentoRepository.contarRegistros();
+            return res.status(200).json(quantidade);
+        } catch (error) {
+            return res.status(500).json({"msg": "Não foi possível realizar esta ação."});
+        }   
+    }
+
+    static async mediaAtendimentos(req, res){
+        try {
+            const qtdAtendimento = await AtendimentoRepository.contarRegistros();
+            const qtdPsicologo = await PsicologoRepository.contarRegistros();
+            const media = qtdAtendimento / qtdPsicologo;
+            return res.status(200).json(media);
+        } catch (error) {
+            return res.status(500).json({"msg": "Não foi possível realizar esta ação."});
+        }   
     }
 };
 

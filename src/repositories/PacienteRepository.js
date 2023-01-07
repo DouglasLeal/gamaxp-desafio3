@@ -29,6 +29,10 @@ class PacienteRepository {
     static async excluir(id) {
         return await Paciente.destroy({ where: { id } });
     }
+
+    static async contarRegistros(){
+        return await Paciente.count();
+    }
 }
 
 export default PacienteRepository;

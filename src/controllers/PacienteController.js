@@ -68,6 +68,15 @@ class PacienteController{
             return res.status(500).json({"msg": "Não foi possível realizar esta ação."});
         }
     }
+
+    static async contarRegistros(req, res){
+        try {
+            const quantidade = await PacienteRepository.contarRegistros();
+            return res.status(200).json(quantidade);
+        } catch (error) {
+            return res.status(500).json({"msg": "Não foi possível realizar esta ação."});
+        }   
+    }
 };
 
 export default PacienteController;

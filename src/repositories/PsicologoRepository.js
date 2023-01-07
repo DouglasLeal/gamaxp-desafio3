@@ -35,6 +35,10 @@ class PsicologoRepository {
     static async excluir(id) {
         return await Psicologo.destroy({ where: { id } });
     }
+
+    static async contarRegistros(){
+        return await Psicologo.count();
+    }
 }
 
 export default PsicologoRepository;
